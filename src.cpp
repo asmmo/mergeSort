@@ -1,10 +1,7 @@
-#include <mutex>
-#include <condition_variable>
+
 #include <iostream>
-#include <future>
 #include <vector>
 #include <utility>
-#include <functional>
 
 template <class T1, template<typename T2, typename T3 = std::allocator<T1>> class container>
 void merge(container<T1>& cont, size_t beg, const size_t end){
