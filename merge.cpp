@@ -26,11 +26,9 @@ void merge(container<T1>& cont, size_t beg, const size_t end){
 }
 
 template <class T1, template<typename T2, typename T3 = std::allocator<T1>> class container>
-void mergeSort(container<T1>& cont, const size_t beg, const size_t end){
-    if( end - beg < 2 ) {
-        if (cont[beg] > cont[end])  std::swap(cont[beg], cont[end]);
-        return;
-    }
+void mergeSort(container<T1>& cont, const size_t beg, const size_t end)
+{
+    if( end == beg  ) return;
 
     mergeSort(cont, beg, (beg+end)/2);
     mergeSort(cont, (beg+end)/2 + 1, end);
@@ -38,7 +36,8 @@ void mergeSort(container<T1>& cont, const size_t beg, const size_t end){
 
 }
 
-int main(){
+int main()
+{
     std::vector<double> vec{{-9.4, 5, 5, 6, 7, 6, -90, 0}};
     for(auto const& el:vec)
         std::cout << el << " ";
