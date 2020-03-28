@@ -1,6 +1,12 @@
+/*
+mergeSort O( nlg(n) )
+Worst complexity: n*log(n)
+Average complexity: n*log(n)
+Best complexity: n*log(n)
+Space complexity: n
+*/
 #include <iostream>
 #include <vector>
-#include <utility>
 
 template <class T1, template<typename T2, typename T3 = std::allocator<T1>> class container>
 void merge(container<T1>& cont, size_t beg, const size_t end){
