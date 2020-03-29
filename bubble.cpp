@@ -1,3 +1,10 @@
+/*
+Worst complexity: n^2
+Average complexity: n^2
+Best complexity: n
+Space complexity: 1
+Stable: Yes
+*/
 #include <iostream>
 #include <vector>
 
