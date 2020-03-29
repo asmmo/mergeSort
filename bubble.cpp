@@ -12,8 +12,9 @@ template<class T, template<class E, class R = std::allocator<T>> class cont>
 void bubbleSort(cont<T>& vec, size_t beg, size_t end){
     bool contIsSorted{ };//This makes the algorithm detect if the array is sorted
     for (; !contIsSorted && end; end--) {
-        for(size_t i {beg}; i < end; ++i) {
-            contIsSorted = true;
+        contIsSorted = true;
+        for(size_t i {beg}; i < end; ++i)
+        {
             if(vec[i] > vec[i+1])
             {
                 std::swap(vec[i], vec[i+1]);
