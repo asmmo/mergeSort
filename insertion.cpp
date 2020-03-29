@@ -1,9 +1,12 @@
 /*
+https://stackoverflow.com/questions/17270628/insertion-sort-vs-bubble-sort-algorithms
 Insertion sort O(n^2)
 Worst complexity: n^2
 Average complexity: n^2
 Best complexity: n
 Space complexity: 1
+stable(*) true
+(*) Stable sort algorithms sort repeated elements in the same order that they appear in the input.
 */
 #include <vector>
 #include <iostream>
