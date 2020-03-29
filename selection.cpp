@@ -3,6 +3,7 @@
 Average complexity: n^2
 Best complexity: n^2
 Space complexity: 1
+stable: false
  */
 #include <iostream>
 #include <vector>
