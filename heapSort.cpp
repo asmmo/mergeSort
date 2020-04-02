@@ -28,8 +28,12 @@ void buildHeapMax(std::vector<T>& arr, const size_t & heapEnd)
 template <class T>
 void heapSort(std::vector<T>& arr)
 {
-    for(size_t heapEnd = arr.size(); heapEnd > 0; ){
-        buildHeapMax(arr, heapEnd);
+    size_t heapEnd = arr.size();
+    buildHeapMax(arr, heapEnd);
+    std::swap(arr[ 0 ], arr[ --heapEnd ]);
+
+    while ( heapEnd > 0 ){
+        heapifyMax(arr, 0, heapEnd);
         std::swap(arr[ 0 ], arr[ --heapEnd ]);
 
     }
