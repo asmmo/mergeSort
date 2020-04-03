@@ -29,3 +29,27 @@ int main(){
         std::cout << el << " ";
 
 }
+/*----------------------STL Implementation-----------------------------*/
+#include <vector>
+#include <functional>
+#include <iostream>
+
+template <typename Iterator, typename Comparator = std::less<>>
+void insertionSort( const Iterator & begin, const Iterator & end, Comparator callableComp = std::less<>{})
+{
+    if( begin == end ) return;
+    for( Iterator i = begin + 1; i != end; )
+    {
+        for( Iterator j { i++ }; j != begin && callableComp( *j, *(j - 1) ); --j)
+            std::swap(*j, *(j - 1));
+    }
+}
+
+int main(){
+
+    std::vector<int> vec {1, -2, 30, 7};
+
+    insertionSort(vec.begin()+1, vec.end());
+    for(auto const & el : vec) std::cout << el << ",";
+
+}
