@@ -8,6 +8,10 @@ Space complexity: 1
 stable(*) true
 (*) Stable sort algorithms sort repeated elements in the same order that they appear in the input.
 */
+
+//for (auto i = v.begin(); i != v.end(); ++i)     std::rotate(std::upper_bound(v.begin(), i, *i), i, i+1);
+
+
 #include <vector>
 #include <iostream>
 template<typename E, template<class T, class alloc = std::allocator<T>> class container>
