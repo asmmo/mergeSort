@@ -1,0 +1,18 @@
+template<typename T>
+std::list<T> sequentialQuickSort(std::list<T> input)
+{
+  if(input.empty()) return input;
+
+  std::list<T> result;
+  result.splice(result.begin(),input,input.begin());
+  T const& pivot=*result.begin();
+  auto dividePoint=std::partition(input.begin(),input.end(), [&](T const& t){return t<pivot;});
+  std::list<T> lower;
+  lower.splice(lower.end(),input,input.begin(), dividePoint);
+
+  auto newLower{ sequentialQuickSort(std::move(lower))};
+  auto newHigher{ sequentialQuickSort(std::move(input))};
+  result.splice(result.end(),newHigher);
+  result.splice(result.begin(),newLower);
+  return result;
+}
