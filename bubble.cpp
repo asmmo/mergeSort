@@ -5,6 +5,29 @@ Best complexity: n
 Space complexity: 1
 Stable: Yes
 */
+
+template<class It>
+void bubbleSort(It begin, It end){
+    bool flag = true;
+    while(flag){
+        flag = false;
+        for (auto it = begin; it < end-1; it++) {
+            if(*it > *(it+1)) {
+                std::swap(*it, *(it + 1));
+                flag =true;
+            };
+        }
+    }
+}
+
+int main(){
+    std::vector<int> vec = {1, 2, 30, -1, 6, 8, 90};
+    bubbleSort(vec.begin(), vec.end());
+    for (auto e: vec)
+        std::cout<< e << " ";
+}
+
+//Another method
 #include <iostream>
 #include <vector>
 
