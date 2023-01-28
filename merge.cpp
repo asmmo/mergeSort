@@ -48,3 +48,55 @@ int main()
         std::cout << el << " ";
 
 }
+
+
+
+
+/*with contigious mem c++20*/
+template <class T>
+std::span<T> combine(std::span<T> x1, std::span<T> x2) {
+    std::queue<T> combined;
+    size_t smallest_index_not_combined_from_x1{};
+    size_t smallest_index_not_combined_from_x2{};
+    for (; smallest_index_not_combined_from_x1 < x1.size() &&
+           smallest_index_not_combined_from_x2 < x2.size();) {
+        if (x1[smallest_index_not_combined_from_x1] <=
+            x2[smallest_index_not_combined_from_x2]) {
+            combined.push(x1[smallest_index_not_combined_from_x1++]);
+        } else {
+            combined.push(x2[smallest_index_not_combined_from_x2++]);
+        }
+    }
+    if (smallest_index_not_combined_from_x1 < x1.size()) {
+        for (auto it = x1.begin() + smallest_index_not_combined_from_x1;
+             it != x1.end(); ++it) {
+            combined.push(std::move(*it));
+        }
+    }
+    for (auto& el : x1) {
+        el = std::move(combined.front());
+        combined.pop();
+    }
+    for (auto& el : x2) {
+        if (combined.empty()) break;
+        el = std::move(combined.front());
+        combined.pop();
+    }
+    return std::span{x1.begin(), x2.end()};
+}
+
+template <class T>
+std::span<T> merge_sort(std::span<T> x) {
+    if (x.size() < 2) return x;
+    auto x1 = std::span(x.begin(), x.begin() + x.size() / 2);
+    auto x2 = std::span(x.begin() + x.size() / 2, x.end());
+    return combine(merge_sort(x1), merge_sort(x2));
+}
+
+int main() {
+    std::vector a{'k', 'a', 'c', 'd', 'b'};
+    merge_sort(std::span(a));
+    for (auto& x : a) {
+        std::cout << x;
+    }
+}
