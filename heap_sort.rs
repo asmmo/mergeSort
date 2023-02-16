@@ -1,3 +1,38 @@
+// struct Solution {}
+// //in ref
+// impl Solution {
+//     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
+//         nums.is_empty()
+//         let mut start_range = 0;
+//         let mut end_range = nums.len();
+//         let mut mid = nums.len() / 2;
+//         while (end_range - start_range > 0) {
+//             if (target == nums[mid]) {
+//                 return mid as i32;
+//             } else if (target < nums[mid] && end_range != mid) {
+//                 end_range = mid;
+//             } else if (target < nums[mid]) {
+//                 end_range = mid - 1;
+//             } else if (target > nums[mid] && start_range != mid) {
+//                 start_range = mid;
+//             } else if (target > nums[mid]) {
+//                 start_range = mid + 1;
+//             }
+//             mid = (start_range + end_range) / 2;
+//         }
+
+//         return -1;
+//     }
+// }
+
+fn main() {
+    println!("Hello, world! {}", 1 ^ 1 ^ 1 ^ 1);
+}
+#[test]
+fn t() {
+    assert_eq!(3usize / 2usize, 1usize);
+}
+
 struct Heap<T> {
     heap: Vec<T>,
     length: usize,
@@ -42,6 +77,8 @@ impl<T: Ord> Heap<T> {
             {
                 if heap[index] > heap[(index - 1) / 2] {
                     heap.swap(index, (index - 1) / 2);
+
+                    // shift down if needed(smaller than any of its children)
                     let mut current_node_index = index;
                     while 2 * current_node_index + 1 < heap.len() {
                         //while not leaf: while has left child
