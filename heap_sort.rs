@@ -1,11 +1,3 @@
-fn main() {
-    println!("Hello, world! {}", 1 ^ 1 ^ 1 ^ 1);
-}
-#[test]
-fn t() {
-    assert_eq!(3usize / 2usize, 1usize);
-}
-
 struct Heap<T> {
     heap: Vec<T>,
     length: usize,
